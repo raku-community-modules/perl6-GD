@@ -25,11 +25,11 @@ sub malloc(int $size) is native(Str) returns OpaquePointer {*};
 
 class GD::Image is repr('CPointer') {
 
-  sub library {
-    my $gd_version = v3;
-    return 'libgd', $gd_version if $*KERNEL.name eq 'darwin';
-    return 'gd', $gd_version;
-  }
+	sub library {
+		my $gd_version = v3;
+		return 'libgd', $gd_version if $*KERNEL.name eq 'darwin';
+		return 'gd', $gd_version;
+	}
 
 	# This is pretty ugly so I'm looking for a more elegant solution...
 	sub GD_add_point(CArray[int32] $points, int32 $idx, int32 $x, int32 $y) {
